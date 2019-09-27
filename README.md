@@ -18,6 +18,7 @@ This project is a fork of a Medium clone which began as [Ken Hibino](https://git
 + Replaced phantomJs by webdrivers
 + Ruby version 2.6.3
 + Works with Elasticsearch 6.3.X
++ Replaced puma with passenger
 
 ### Application Model
 
@@ -34,6 +35,10 @@ This project is a fork of a Medium clone which began as [Ken Hibino](https://git
 
 
 ## Installation
+## Localhost development / Self hosting
++ Ruby 2.6.3 (either your distribution package or through rbenv or rvm)
++ Passenger 6.0
++ Elasticsearch
 
 ### Heroku
 
