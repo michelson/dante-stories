@@ -62,7 +62,7 @@ class PostsController < ApplicationController
   def uploads
     @post = current_user.posts.find(params[:id])
     a = @post.images.attach(params[:file])
-    render json: {url: url_for(a.last)}
+    render json: {url: url_for(@post.images.last)}
   end
 
   private

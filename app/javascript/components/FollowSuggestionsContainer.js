@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from "react-dom";
 
 import SuggestionItem from "./SuggestionItem";
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+import {TransitionGroup} from 'react-transition-group'; // ES6
 
 export default class FollowSuggestionsContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
+    this.state = {
       users: [],
       activeUsers: []
     };
@@ -28,11 +28,11 @@ export default class FollowSuggestionsContainer extends React.Component {
   fetchUsers() {
     $.ajax({
       url: '/api/follow_suggestions.json',
-      method: 'GET', 
+      method: 'GET',
       dataType: 'json',
       success: (data) => {
         const newActives = data.slice(0, 3)
-        this.setState({ 
+        this.setState({
           activeUsers: newActives,
           users: [ ...data.slice(3), ...newActives ]
         });
@@ -60,7 +60,7 @@ export default class FollowSuggestionsContainer extends React.Component {
     }
     return this.state.activeUsers.map(user => {
       return (
-        <ReactCSSTransitionGroup
+        <TransitionGroup
           key={user.id}
           transitionName="suggestion"
           transitionAppear={true}
@@ -69,7 +69,7 @@ export default class FollowSuggestionsContainer extends React.Component {
           transitionLeaveTimeout={300}
         >
           <SuggestionItem key={user.id} {...user} />
-        </ReactCSSTransitionGroup>
+        </TransitionGroup>
       )
     });
   }
@@ -96,4 +96,3 @@ export default class FollowSuggestionsContainer extends React.Component {
   }
 
 }
-
