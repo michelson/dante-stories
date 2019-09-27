@@ -8,7 +8,7 @@ This project is a fork of a Medium clone which began as [Ken Hibino](https://git
 
 ## The specific improvements from the original repository:
 
-### Platform 
+### Platform
 
 + Rails 6.0.0 update!
 + Removed elastisearch-rails , replaced by searchkick
@@ -16,7 +16,7 @@ This project is a fork of a Medium clone which began as [Ken Hibino](https://git
 + Webpacker added
 + Updated dependencies
 + Replaced phantomJs by webdrivers
-+ Ruby version 2.5.0
++ Ruby version 2.6.3
 + Works with Elasticsearch 6.3.X
 
 ### Application Model
