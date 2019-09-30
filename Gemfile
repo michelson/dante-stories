@@ -8,7 +8,7 @@ gem 'rails', '6.0.0'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Passenger as the app server
-gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+gem 'puma', '>= 4.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
