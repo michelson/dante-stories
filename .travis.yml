@@ -15,11 +15,13 @@ services:
   - redis-server
 
 addons:
+  postgresql: "11"
   apt:
     packages:
       - chromium-browser
       - libgconf-2-4
-      - postgresql-common
+      - postgresql-11
+      - postgresql-client-11
   chrome: stable
 
 before_script:
