@@ -7,7 +7,7 @@ ruby '2.6.3'
 gem 'rails', '6.0.0'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
-# Use Passenger as the app server
+# Use Puma as the app server
 gem 'puma', '>= 4.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

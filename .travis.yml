@@ -6,13 +6,13 @@ dist: trusty
 language: ruby
 
 rvm:
-  - 2.5.0
+  - 2.6.3
 
 services:
   - elasticsearch
 
 addons:
-  postgresql: "9.4"
+  postgresql: "11.0"
   apt:
     packages:
       - chromium-browser
@@ -28,6 +28,6 @@ before_script:
   - npm --version
   - yarn install
 
-script: 
+script:
   - bundle exec rake db:schema:load
   - bundle exec rspec
