@@ -19,6 +19,7 @@ addons:
     packages:
       - chromium-browser
       - libgconf-2-4
+      - postgresql-common
   chrome: stable
 
 before_script:
