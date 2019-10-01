@@ -15,7 +15,6 @@ services:
   - redis-server
 
 addons:
-  postgresql: "11.0"
   apt:
     packages:
       - chromium-browser
