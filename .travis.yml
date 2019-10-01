@@ -15,7 +15,7 @@ services:
   - postgresql
 
 addons:
-
+  postgresql: "10"
   apt:
     packages:
       - chromium-browser
