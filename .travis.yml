@@ -10,7 +10,6 @@ rvm:
 
 services:
   - elasticsearch
-  - postgresql
   - memcached
   - redis-server
 
@@ -20,9 +19,11 @@ addons:
     packages:
       - chromium-browser
       - libgconf-2-4
-      - postgresql-11
-      - postgresql-client-11
   chrome: stable
+
+  env:
+  global:
+  - PGPORT=5433
 
 before_script:
   - sleep 10
