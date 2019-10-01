@@ -12,18 +12,17 @@ services:
   - elasticsearch
   - memcached
   - redis-server
+  - postgresql
 
 addons:
-  postgresql: "11"
+
   apt:
     packages:
       - chromium-browser
       - libgconf-2-4
   chrome: stable
 
-  env:
-  global:
-  - PGPORT=5433
+
 
 before_script:
   - sleep 10
