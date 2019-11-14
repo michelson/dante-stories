@@ -172,6 +172,7 @@ MAILER_ENABLE_TLS=[true|false]
 ```
 
 As appropriate, set variables for Oauth2 login
+
 The callback addresses to be needed are as below:
 
 ```
