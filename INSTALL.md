@@ -5,7 +5,7 @@
 * PostgreSQL
 * Elasticsearch
 * Redis
-* Ruby version 2.5.0
+* Ruby version 2.6.5
 * Rails
 
 # Lets Get Started!
@@ -31,11 +31,11 @@ echo ‘if which rbenv > /dev/null; then eval “$(rbenv init -)”; fi’ >> ~/
 source ~/.bash_profile
 ```
 
-Install Ruby 2.5.0 which is required by the app:
+Install Ruby 2.6.5 which is required by the app:
 
 ```
-rbenv install 2.5.0
-rbenv global 2.5.0
+rbenv install 2.6.5
+rbenv global 2.6.5
 ruby -v
 ```
 
