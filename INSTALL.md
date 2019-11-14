@@ -5,7 +5,7 @@
 * PostgreSQL
 * Elasticsearch
 * Redis
-* Ruby version 2.3.0
+* Ruby version 2.5.0
 * Rails
 
 # Lets Get Started!
@@ -31,26 +31,15 @@ echo ‘if which rbenv > /dev/null; then eval “$(rbenv init -)”; fi’ >> ~/
 source ~/.bash_profile
 ```
 
-Install Ruby 2.3.0 which is required by the app:
+Install Ruby 2.5.0 which is required by the app:
 
 ```
-rbenv install 2.3.0
-rbenv global 2.3.0
+rbenv install 2.5.0
+rbenv global 2.5.0
 ruby -v
 ```
 
-**3. Install Rails**
-
-Installing Rails is really simple:
-
-```
-gem install rails -v 4.2.4
-rbenv rehash
-rails -v
-```
-
-
-**4. Install PostgreSQL**
+**3. Install PostgreSQL**
 
 ```
 brew install postgresql
@@ -88,7 +77,7 @@ lunchy start postgres
 ```
 
 
-**5. Install Elasticsearch**
+**4. Install Elasticsearch**
 
 Where would we be without search? The app uses ElasticSearch 1.7.3 which is a search server - quite simply it’s going to help you find posts and users in the app.
 
@@ -119,13 +108,23 @@ Lets check it is running by visiting [http://localhost:9200](http://localhost:92
 }
 ```
 
-**6. Install Redis**
+**5. Install Redis**
 
 Using Homebrew install Redis and then start the server:
 
 ```
 brew install redis
 redis-server
+```
+
+**6. Install ImageMagick or GraphicsMagick**
+
+```
+brew install imagemagick
+```
+or
+```
+brew install graphicsmagick
 ```
 
 **7. Clone the app**
@@ -141,15 +140,47 @@ Change directory into the stories folder
 cd stories
 ```
 
-
-**8. Start the app**
+**8. Install the app**
 
 First install all the required gems:
 ```
 bundle install
 ```
 
-Execute Sidekiq, ElasticSearch and Mailer
+Next, Set up environment variables:
+
+You have to set `SECRET_KEY_BASE` and `STORIES_DATABASE_*` at least. (Using `rake secret` create a value to set)
+
+```
+STORIES_DATABASE_HOST=db_host
+STORIES_DATABASE_PORT=db_port
+STORIES_DATABASE_NAME=db_name
+STORIES_DATABASE_USER=db_user
+STORIES_DATABASE_PASSWORD=db_password
+```
+
+Also have to set the following values
+
+```
+MAILER_ADDRESS=localhost
+MAILER_PORT=[25|465|587]
+MAILER_AUTH=[:plain|:cram-md5|...]
+MAILER_USER=user
+MAILER_PASS=password
+MAILER_DOMAIN=example.com
+MAILER_ENABLE_TLS=[true|false]
+```
+
+As appropriate, set variables for Oauth2 login
+The callback addresses to be needed are as below:
+
+```
+Facebook: https://example.com/users/auth/facebook/callback
+Twitter:  https://example.com/users/auth/twitter/callback
+Google:   https://example.com/users/auth/google-oatuh2/callback
+```
+
+Then Execute Sidekiq, ElasticSearch and Mailer
 ```
 bundle exec sidekiq -q elastic search -q mailer -c 3
 ```
@@ -172,7 +203,9 @@ rails server
 
 Then browse to [http://localhost:3000](http://localhost:3000) to view the app in all its glory. Wait where is that “Hello World!” moment? Time to create the admin account so we can create some posts…
 
-**9. Create an Admin account**
+**9. Update a user as an Admin account**
+
+Fist, sign up your account and then,
 
 Enter the rails console:
 
@@ -180,10 +213,10 @@ Enter the rails console:
 rails console
 ```
 
-Add a new user account replacing your email and password:
+Update a user account replacing your email:
 
 ```
-Admin.create(email: ‘your@email.com’, password: ‘password’, password_confirmation: ‘password’)
+User.update(email: ‘your@email.com’, role: ‘admin’)
 ```
 
 Close the console:
@@ -191,10 +224,6 @@ Close the console:
 ```
 exit
 ```
-
-Navigate to the Admin dashboard and enter your email and password:
-
-[http://localhost:3000/admins/sign_in](http://localhost:3000/admins/sign_in)
 
 You can now...
 - Write new posts
