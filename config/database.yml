@@ -80,8 +80,10 @@ test:
 #
 production:
   <<: *default
-  database: stories_production
-  username: stories
+  database: <%= ENV['STORIES_DATABASE_NAME'] { "stories_production" } %>
+  username: <%= ENV['STORIES_DATABASE_USER'] { "stories" } %>
+  host: <%= ENV['STORIES_DATABASE_HOST'] { "localhost" } %>
+  port: <%= ENV['STORIES_DATABASE_PORT'] { 5432 } %>
   password: <%= ENV['STORIES_DATABASE_PASSWORD'] %>
   pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
 
